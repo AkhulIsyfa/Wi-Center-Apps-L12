@@ -84,7 +84,7 @@ class User extends Authenticatable
      */
     public function getAuthIdentifierName(): string
     {
-        return 'id';
+        return 'user_name';
     }
 
     /**
@@ -93,7 +93,7 @@ class User extends Authenticatable
      */
     public function isActive(): bool
     {
-        return $this->user_status === 0;
+        return $this->user_status === 1;
     }
 
     /**
