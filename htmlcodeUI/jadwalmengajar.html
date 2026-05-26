@@ -1,0 +1,579 @@
+<!doctype html>
+
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Jadwal Mengajar - WI-Center</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#dce1ff",
+              "on-primary-container": "#90a8ff",
+              primary: "#00236f",
+              "secondary-fixed-dim": "#4edea3",
+              "inverse-surface": "#213145",
+              "inverse-on-surface": "#eaf1ff",
+              background: "#f8f9ff",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#82abff",
+              "on-tertiary-fixed-variant": "#004395",
+              tertiary: "#00285e",
+              "on-secondary-container": "#00714d",
+              "surface-container-low": "#eff4ff",
+              "outline-variant": "#c5c5d3",
+              "primary-fixed-dim": "#b6c4ff",
+              error: "#ba1a1a",
+              "on-surface": "#0b1c30",
+              "surface-dim": "#cbdbf5",
+              "on-secondary-fixed-variant": "#005236",
+              outline: "#757682",
+              "on-tertiary-fixed": "#001a42",
+              "on-background": "#0b1c30",
+              secondary: "#006c49",
+              "surface-container-highest": "#d3e4fe",
+              "secondary-fixed": "#6ffbbe",
+              "surface-tint": "#4059aa",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#444651",
+              "tertiary-fixed-dim": "#adc6ff",
+              "tertiary-fixed": "#d8e2ff",
+              "primary-container": "#1e3a8a",
+              "on-primary-fixed": "#00164e",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#d3e4fe",
+              "tertiary-container": "#003d88",
+              "surface-bright": "#f8f9ff",
+              "inverse-primary": "#b6c4ff",
+              "on-error": "#ffffff",
+              surface: "#f8f9ff",
+              "on-primary-fixed-variant": "#264191",
+              "on-secondary-fixed": "#002113",
+              "surface-container": "#e5eeff",
+              "secondary-container": "#6cf8bb",
+              "surface-container-high": "#dce9ff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "16px",
+              "topbar-height": "72px",
+              gutter: "24px",
+              "sidebar-collapsed": "80px",
+              "margin-desktop": "32px",
+              "sidebar-width": "260px",
+              "base-unit": "8px",
+            },
+            fontFamily: {
+              "headline-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-lg": ["Inter"],
+              "headline-lg": ["Inter"],
+              "label-md": ["Inter"],
+              "label-sm": ["Inter"],
+            },
+            fontSize: {
+              "headline-sm": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-lg": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "600" },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #f8fafc;
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background font-body-md min-h-screen flex">
+    <!-- SideNavBar (WEB) -->
+    <nav
+      class="hidden md:flex flex-col py-8 gap-2 w-sidebar-width h-full fixed left-0 top-0 h-screen bg-on-background text-white border-r border-white/10 shadow-xl z-40"
+    >
+      <div class="px-6 mb-8">
+        <h1 class="text-headline-sm font-headline-sm font-black text-white">
+          WI-Center
+        </h1>
+        <p class="text-label-sm font-label-sm text-surface-variant/70 mt-1">
+          Expert Facilitator
+        </p>
+      </div>
+      <div class="flex-1 flex flex-col gap-1">
+        <a
+          class="flex items-center gap-4 text-surface-variant hover:text-white px-4 py-3 hover:bg-white/10 transition-all duration-200"
+          href="dashboard.html"
+          ><span class="material-symbols-outlined">dashboard</span
+          ><span class="text-label-md font-label-md">Dashboard</span></a
+        ><a
+          class="flex items-center gap-4 text-surface-variant hover:text-white px-4 py-3 hover:bg-white/10 transition-all duration-200"
+          href="daftarkelas.html"
+          ><span class="material-symbols-outlined">school</span
+          ><span class="text-label-md font-label-md">Kelas Saya</span></a
+        ><a
+          class="flex items-center gap-4 bg-white/10 text-white font-semibold border-l-4 border-secondary px-4 py-3 duration-150"
+          href="jadwalmengajar.html"
+          ><span
+            class="material-symbols-outlined"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >calendar_today</span
+          ><span class="text-label-md font-label-md">Jadwal</span></a
+        ><a
+          class="flex items-center gap-4 text-surface-variant hover:text-white px-4 py-3 hover:bg-white/10 transition-all duration-200"
+          href="report.html"
+          ><span class="material-symbols-outlined">analytics</span
+          ><span class="text-label-md font-label-md">Report</span></a
+        >
+      </div>
+      <div
+        class="mt-auto border-t border-outline-variant pt-4 mx-4 border-white/10"
+      >
+        <div class="flex flex-col gap-1">
+          <a
+            class="flex items-center gap-4 text-surface-variant hover:text-white px-4 py-3 hover:bg-white/10 transition-all duration-200"
+            href="profil.html"
+            ><span class="material-symbols-outlined">account_circle</span
+            ><span class="text-label-md font-label-md">Profil</span></a
+          ><a
+            class="flex items-center gap-4 text-surface-variant hover:text-white px-4 py-3 hover:bg-white/10 transition-all duration-200"
+            href="login.html"
+            ><span class="material-symbols-outlined">logout</span
+            ><span class="text-label-md font-label-md">Logout</span></a
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col md:ml-[260px] min-h-screen">
+      <!-- TopNavBar -->
+      <header
+        class="docked full-width top-0 sticky z-50 bg-white/70 dark:bg-surface-container/70 backdrop-blur-[20px] border-b border-white dark:border-outline-variant shadow-sm dark:shadow-none"
+      >
+        <div
+          class="flex items-center justify-between px-margin-desktop h-topbar-height w-full"
+        >
+          <!-- Mobile Menu & Title -->
+          <div class="flex items-center gap-4 md:hidden">
+            <button
+              class="text-on-surface-variant p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors"
+            >
+              <span class="material-symbols-outlined">menu</span>
+            </button>
+            <span
+              class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed"
+              >WI-Center</span
+            >
+          </div>
+          <!-- Desktop Search / Placeholder -->
+          <div class="hidden md:flex flex-1 max-w-md">
+            <div class="relative w-full">
+              <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+                >search</span
+              >
+              <input
+                class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md font-body-md text-on-surface focus:ring-2 focus:ring-primary/20 transition-shadow"
+                placeholder="Cari jadwal atau materi..."
+                type="text"
+              />
+            </div>
+          </div>
+          <!-- Actions -->
+          <div class="flex items-center gap-2">
+            <button
+              class="text-on-surface-variant p-2 rounded-full hover:bg-primary/5 dark:hover:bg-primary-fixed/10 transition-colors"
+            >
+              <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button
+              class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant shadow-sm ml-2"
+            >
+              <img
+                alt="User Profile Avatar"
+                class="w-full h-full object-cover"
+                data-alt="A professional headshot of a mature educator in a light grey blazer against a soft, bright studio background. The lighting is flattering and even, typical of corporate portraiture. The individual has a friendly but authoritative expression, conveying expertise and approachability. The image uses a cool, neutral color palette that complements the overarching primary blue UI design scheme."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5ZnO-kI3DowoPrafI3FDHpiXp6sEjG4sGnMX7SGpij0GVCzs0_1f4sx0NkANBL1CHbPEttRmBrGnzKKHA-isbHRkWH5nCIrDmMP9eYJBQaXvQ-jT-d6BnGUtQLtfXvZgvnV55xk6yBF9c1kEnOcA6EoK6sIHLKyrKiv9sXu_7c4KTh_btkRPqZiFTM-7wIgLbGR6aUBHjJgw5Pcixdf54dyKcoQ8fSWDdU21_Rjxd0F0EsBruvLkW2_TFl7-KiANGkMHaJKlbYI0"
+              />
+            </button>
+          </div>
+        </div>
+      </header>
+      <!-- Page Content -->
+      <main
+        class="flex-1 p-margin-mobile md:p-margin-desktop overflow-x-hidden"
+      >
+        <div
+          class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4"
+        >
+          <div>
+            <h2
+              class="text-headline-md font-headline-md text-on-background mb-1"
+            >
+              Jadwal Mengajar
+            </h2>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Kelola dan pantau jadwal serta dokumen penugasan Anda.
+            </p>
+          </div>
+          <!-- Filter Bar -->
+          <div
+            class="flex items-center gap-3 bg-white p-2 rounded-lg shadow-[0_4px_20px_-5px_rgba(30,58,138,0.08)] border border-white"
+          >
+            <div
+              class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-md border border-outline-variant/30 hover:border-primary/30 transition-colors cursor-pointer"
+            >
+              <span
+                class="material-symbols-outlined text-on-surface-variant text-[20px]"
+                >calendar_month</span
+              >
+              <select
+                class="bg-transparent border-none p-0 text-label-md font-label-md text-on-surface focus:ring-0 cursor-pointer outline-none"
+              >
+                <option>Oktober</option>
+                <option>November</option>
+                <option>Desember</option>
+              </select>
+            </div>
+            <div
+              class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-md border border-outline-variant/30 hover:border-primary/30 transition-colors cursor-pointer"
+            >
+              <select
+                class="bg-transparent border-none p-0 text-label-md font-label-md text-on-surface focus:ring-0 cursor-pointer outline-none"
+              >
+                <option>2023</option>
+                <option>2024</option>
+              </select>
+            </div>
+            <button
+              class="bg-primary text-on-primary px-4 py-2 rounded-md text-label-md font-label-md hover:bg-primary-container transition-colors shadow-sm"
+            >
+              Filter
+            </button>
+          </div>
+        </div>
+        <!-- Data Table Card (Glassmorphism / Raised) -->
+        <div
+          class="bg-white/80 backdrop-blur-md rounded-xl shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] border border-white/20 overflow-hidden"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr
+                  class="bg-surface-container-low/50 border-b border-outline-variant/50"
+                >
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-16"
+                  >
+                    No
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider"
+                  >
+                    Tanggal
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider"
+                  >
+                    Materi
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider"
+                  >
+                    Waktu
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider"
+                  >
+                    Lokasi
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider text-right"
+                  >
+                    Dokumen (SPMK)
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="divide-y divide-outline-variant/30 text-body-md font-body-md text-on-surface"
+              >
+                <!-- Row 1 -->
+                <tr
+                  class="hover:bg-surface-container-lowest transition-colors group"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">1</td>
+                  <td class="py-4 px-6 font-medium">12 Okt 2023</td>
+                  <td class="py-4 px-6">
+                    <div class="font-medium text-primary">
+                      Kepemimpinan Pelayanan
+                    </div>
+                    <div class="text-label-sm text-on-surface-variant mt-0.5">
+                      Diklat PIM IV Angkatan II
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div
+                      class="flex items-center gap-1.5 text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >schedule</span
+                      >
+                      <span>08.00 - 10.00</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="flex items-center gap-1.5">
+                      <span
+                        class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                        >location_on</span
+                      >
+                      <span>Balai Diklat BPSDM</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <button
+                      class="inline-flex items-center gap-1.5 bg-secondary/10 text-secondary hover:bg-secondary hover:text-white border border-secondary/20 px-3 py-1.5 rounded-md text-label-md font-label-md transition-all"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >download</span
+                      >
+                      Unduh
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr
+                  class="hover:bg-surface-container-lowest transition-colors group"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">2</td>
+                  <td class="py-4 px-6 font-medium">15 Okt 2023</td>
+                  <td class="py-4 px-6">
+                    <div class="font-medium text-primary">Manajemen Mutu</div>
+                    <div class="text-label-sm text-on-surface-variant mt-0.5">
+                      Diklat Teknis Fungsional
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div
+                      class="flex items-center gap-1.5 text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >schedule</span
+                      >
+                      <span>10.15 - 12.15</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="flex items-center gap-1.5">
+                      <span
+                        class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                        >location_on</span
+                      >
+                      <span>Ruang Kelas C</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <span
+                      class="inline-flex items-center gap-1.5 bg-error-container text-error px-3 py-1.5 rounded-md text-label-md font-label-md border border-error/20"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >warning</span
+                      >
+                      Belum
+                    </span>
+                  </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr
+                  class="hover:bg-surface-container-lowest transition-colors group"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">3</td>
+                  <td class="py-4 px-6 font-medium">18 Okt 2023</td>
+                  <td class="py-4 px-6">
+                    <div class="font-medium text-primary">
+                      Inovasi Pelayanan Publik
+                    </div>
+                    <div class="text-label-sm text-on-surface-variant mt-0.5">
+                      Diklat PIM IV Angkatan III
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div
+                      class="flex items-center gap-1.5 text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >schedule</span
+                      >
+                      <span>08.00 - 12.00</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="flex items-center gap-1.5">
+                      <span
+                        class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                        >location_on</span
+                      >
+                      <span>Balai Diklat BPSDM</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <button
+                      class="inline-flex items-center gap-1.5 bg-secondary/10 text-secondary hover:bg-secondary hover:text-white border border-secondary/20 px-3 py-1.5 rounded-md text-label-md font-label-md transition-all"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >download</span
+                      >
+                      Unduh
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr
+                  class="hover:bg-surface-container-lowest transition-colors group"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">4</td>
+                  <td class="py-4 px-6 font-medium">22 Okt 2023</td>
+                  <td class="py-4 px-6">
+                    <div class="font-medium text-primary">Etika Birokrasi</div>
+                    <div class="text-label-sm text-on-surface-variant mt-0.5">
+                      Latsar CPNS Golongan III
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div
+                      class="flex items-center gap-1.5 text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >schedule</span
+                      >
+                      <span>13.00 - 15.00</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6">
+                    <div class="flex items-center gap-1.5">
+                      <span
+                        class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                        >video_camera_front</span
+                      >
+                      <span>Zoom Meeting</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <button
+                      class="inline-flex items-center gap-1.5 bg-secondary/10 text-secondary hover:bg-secondary hover:text-white border border-secondary/20 px-3 py-1.5 rounded-md text-label-md font-label-md transition-all"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >download</span
+                      >
+                      Unduh
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Pagination Footer -->
+          <div
+            class="bg-surface-container-lowest/50 border-t border-outline-variant/30 px-6 py-4 flex items-center justify-between"
+          >
+            <span class="text-label-md font-label-md text-on-surface-variant"
+              >Menampilkan 1-4 dari 12 jadwal</span
+            >
+            <div class="flex gap-2">
+              <button
+                class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container-low disabled:opacity-50"
+                disabled=""
+              >
+                <span class="material-symbols-outlined text-[20px]"
+                  >chevron_left</span
+                >
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center rounded border border-primary bg-primary/5 text-primary font-medium"
+              >
+                1
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors"
+              >
+                2
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors"
+              >
+                3
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container-low transition-colors"
+              >
+                <span class="material-symbols-outlined text-[20px]"
+                  >chevron_right</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

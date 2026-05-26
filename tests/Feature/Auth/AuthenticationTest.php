@@ -1,8 +1,6 @@
 <?php
 
 use App\Models\User;
-use Illuminate\Support\Facades\RateLimiter;
-use Laravel\Fortify\Features;
 
 test('login screen can be rendered', function () {
     $response = $this->get(route('login'));
@@ -11,67 +9,89 @@ test('login screen can be rendered', function () {
 });
 
 test('users can authenticate using the login screen', function () {
-    $user = User::factory()->create();
+    // Create a user with a known MD5 password in the legacy format
+    $user = User::create([
+        'user_name' => 'testuser',
+        'name' => 'Test User',
+        'user_salt' => '',
+        'user_password' => md5('password123'),
+        'user_akses' => '0',
+        'id_balai' => 1,
+        'user_status' => 0, // 0 = active
+    ]);
 
     $response = $this->post(route('login.store'), [
-        'email' => $user->email,
-        'password' => 'password',
+        'user_name' => $user->user_name,
+        'password' => 'password123',
     ]);
 
     $this->assertAuthenticated();
     $response->assertRedirect(route('dashboard', absolute: false));
-});
 
-test('users with two factor enabled are redirected to two factor challenge', function () {
-    $this->skipUnlessFortifyHas(Features::twoFactorAuthentication());
-
-    Features::twoFactorAuthentication([
-        'confirm' => true,
-        'confirmPassword' => true,
-    ]);
-
-    $user = User::factory()->withTwoFactor()->create();
-
-    $response = $this->post(route('login'), [
-        'email' => $user->email,
-        'password' => 'password',
-    ]);
-
-    $response->assertRedirect(route('two-factor.login'));
-    $response->assertSessionHas('login.id', $user->id);
-    $this->assertGuest();
+    // Cleanup
+    $user->delete();
 });
 
 test('users can not authenticate with invalid password', function () {
-    $user = User::factory()->create();
+    $user = User::create([
+        'user_name' => 'testuser_invalid',
+        'name' => 'Test User Invalid',
+        'user_salt' => '',
+        'user_password' => md5('correctpassword'),
+        'user_akses' => '0',
+        'id_balai' => 1,
+        'user_status' => 0,
+    ]);
 
     $this->post(route('login.store'), [
-        'email' => $user->email,
+        'user_name' => $user->user_name,
         'password' => 'wrong-password',
     ]);
 
     $this->assertGuest();
+
+    // Cleanup
+    $user->delete();
+});
+
+test('inactive users can not authenticate', function () {
+    $user = User::create([
+        'user_name' => 'testuser_inactive',
+        'name' => 'Inactive User',
+        'user_salt' => '',
+        'user_password' => md5('password123'),
+        'user_akses' => '0',
+        'id_balai' => 1,
+        'user_status' => 1, // 1 = inactive
+    ]);
+
+    $this->post(route('login.store'), [
+        'user_name' => $user->user_name,
+        'password' => 'password123',
+    ]);
+
+    $this->assertGuest();
+
+    // Cleanup
+    $user->delete();
 });
 
 test('users can logout', function () {
-    $user = User::factory()->create();
+    $user = User::create([
+        'user_name' => 'testuser_logout',
+        'name' => 'Test Logout',
+        'user_salt' => '',
+        'user_password' => md5('password123'),
+        'user_akses' => '0',
+        'id_balai' => 1,
+        'user_status' => 0,
+    ]);
 
     $response = $this->actingAs($user)->post(route('logout'));
 
     $response->assertRedirect(route('home'));
-
     $this->assertGuest();
-});
 
-test('users are rate limited', function () {
-    $user = User::factory()->create();
-
-    RateLimiter::increment(md5('login'.implode('|', [$user->email, '127.0.0.1'])), amount: 5);
-
-    $response = $this->post(route('login.store'), [
-        'email' => $user->email,
-        'password' => 'wrong-password',
-    ]);
-
-    $response->assertTooManyRequests();
+    // Cleanup
+    $user->delete();
 });

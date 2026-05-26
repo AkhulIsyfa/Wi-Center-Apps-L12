@@ -1,0 +1,487 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Report JP - WI-Center</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#0b1c30",
+              "surface-container-low": "#eff4ff",
+              "on-tertiary-container": "#82abff",
+              "on-tertiary-fixed": "#001a42",
+              "on-primary-fixed-variant": "#264191",
+              "surface-tint": "#4059aa",
+              background: "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "outline-variant": "#c5c5d3",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#004395",
+              "surface-container-highest": "#d3e4fe",
+              "surface-bright": "#f8f9ff",
+              primary: "#00236f",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#0b1c30",
+              "secondary-fixed-dim": "#4edea3",
+              "inverse-primary": "#b6c4ff",
+              error: "#ba1a1a",
+              "on-error-container": "#93000a",
+              "surface-dim": "#cbdbf5",
+              "on-secondary-fixed-variant": "#005236",
+              "on-secondary-fixed": "#002113",
+              "primary-container": "#1e3a8a",
+              surface: "#f8f9ff",
+              "on-surface-variant": "#444651",
+              "inverse-on-surface": "#eaf1ff",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#dce1ff",
+              tertiary: "#00285e",
+              "on-secondary-container": "#00714d",
+              "on-primary": "#ffffff",
+              "tertiary-container": "#003d88",
+              "tertiary-fixed-dim": "#adc6ff",
+              "inverse-surface": "#213145",
+              outline: "#757682",
+              "secondary-container": "#6cf8bb",
+              "on-secondary": "#ffffff",
+              secondary: "#006c49",
+              "surface-variant": "#d3e4fe",
+              "on-primary-container": "#90a8ff",
+              "secondary-fixed": "#6ffbbe",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#d8e2ff",
+              "on-primary-fixed": "#00164e",
+              "primary-fixed-dim": "#b6c4ff",
+              "surface-container-high": "#dce9ff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "16px",
+              "topbar-height": "72px",
+              gutter: "24px",
+              "sidebar-collapsed": "80px",
+              "margin-desktop": "32px",
+              "sidebar-width": "260px",
+              "base-unit": "8px",
+            },
+            fontFamily: {
+              "headline-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-lg": ["Inter"],
+              "headline-lg": ["Inter"],
+              "label-md": ["Inter"],
+              "label-sm": ["Inter"],
+              headline: ["Inter"],
+              display: ["Inter"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+            fontSize: {
+              "headline-sm": [
+                "20px",
+                {
+                  lineHeight: "28px",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": [
+                "16px",
+                {
+                  lineHeight: "24px",
+                  fontWeight: "400",
+                },
+              ],
+              "headline-md": [
+                "24px",
+                {
+                  lineHeight: "32px",
+                  fontWeight: "600",
+                },
+              ],
+              "body-lg": [
+                "18px",
+                {
+                  lineHeight: "28px",
+                  fontWeight: "400",
+                },
+              ],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  fontWeight: "600",
+                },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background text-on-background font-body-md min-h-screen flex">
+    <!-- SideNavBar -->
+    <nav
+      class="hidden md:flex fixed left-0 top-0 h-screen w-sidebar-width bg-[#0b1c30]/95 backdrop-blur-xl border-r border-white/10 shadow-2xl flex-col py-8 gap-2 z-40"
+    >
+      <div class="px-6 mb-8 flex flex-col gap-1">
+        <div
+          class="text-headline-sm font-headline-sm font-black text-white tracking-tight"
+        >
+          WI-Center
+        </div>
+        <div
+          class="text-label-sm font-label-sm text-blue-300/80 uppercase tracking-widest"
+        >
+          Expert Facilitator
+        </div>
+      </div>
+      <div class="flex flex-col w-full">
+        <a
+          class="flex items-center gap-4 text-blue-100/70 hover:text-white px-6 py-3.5 hover:bg-white/5 transition-all duration-300 group"
+          href="dashboard.html"
+          ><span
+            class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform"
+            data-icon="dashboard"
+            >dashboard</span
+          ><span class="text-label-md font-medium">Dashboard</span></a
+        ><a
+          class="flex items-center gap-4 text-blue-100/70 hover:text-white px-6 py-3.5 hover:bg-white/5 transition-all duration-300 group"
+          href="daftarkelas.html"
+          ><span
+            class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform"
+            data-icon="school"
+            >school</span
+          ><span class="text-label-md font-medium">Kelas Saya</span></a
+        ><a
+          class="flex items-center gap-4 text-blue-100/70 hover:text-white px-6 py-3.5 hover:bg-white/5 transition-all duration-300 group"
+          href="jadwalmengajar.html"
+          ><span
+            class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform"
+            data-icon="calendar_today"
+            >calendar_today</span
+          ><span class="text-label-md font-medium">Jadwal</span></a
+        ><a
+          class="flex items-center gap-4 bg-white/10 text-white font-semibold border-l-4 border-blue-400 px-6 py-3.5 transition-all"
+          href="report.html"
+          ><span
+            class="material-symbols-outlined text-[22px]"
+            data-icon="analytics"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >analytics</span
+          ><span class="text-label-md font-medium">Report</span></a
+        >
+      </div>
+      <div class="mt-auto flex flex-col w-full">
+        <a
+          class="flex items-center gap-4 text-blue-100/70 hover:text-white px-6 py-3.5 hover:bg-white/5 transition-all duration-300 group"
+          href="profil.html"
+          ><span
+            class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform"
+            data-icon="account_circle"
+            >account_circle</span
+          ><span class="text-label-md font-medium">Profil</span></a
+        ><a
+          class="flex items-center gap-4 text-red-300/80 hover:text-red-300 px-6 py-3.5 hover:bg-red-500/10 transition-all duration-300 group"
+          href="login.html"
+          ><span
+            class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform"
+            data-icon="logout"
+            >logout</span
+          ><span class="text-label-md font-medium">Logout</span></a
+        >
+      </div>
+    </nav>
+    <!-- Main Content Area -->
+    <main class="flex-1 md:ml-sidebar-width flex flex-col min-h-screen">
+      <!-- TopNavBar -->
+      <header
+        class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-topbar-height w-full bg-white/70 dark:bg-surface-container/70 backdrop-blur-[20px] docked full-width top-0 sticky z-50 border-b border-white dark:border-outline-variant shadow-sm dark:shadow-none"
+      >
+        <div
+          class="md:hidden text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed"
+        >
+          WI-Center
+        </div>
+        <div class="flex-1 max-w-md hidden md:flex items-center">
+          <!-- Search can go here if needed per component logic, but suppressing for clean report view -->
+          <h1 class="text-headline-sm font-headline-sm text-on-surface">
+            Laporan Jam Pelajaran (JP)
+          </h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            class="p-2 text-on-surface-variant hover:bg-primary/5 rounded-full transition-colors"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+          </button>
+          <div
+            class="h-8 w-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant cursor-pointer"
+          >
+            <img
+              alt="User Profile Avatar"
+              class="w-full h-full object-cover"
+              data-alt="A professional headshot of a mature male educator in a modern office setting. The lighting is soft and natural, emphasizing competence and approachability. The color palette aligns with a corporate modern aesthetic, featuring crisp whites and subtle blues. The image feels trustworthy and aligned with an expert facilitator persona."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPrY2RNFoopIOxjSfGED54KIfFfMVOWWdApihQhk1MbVu8UvInr0zaDPMQeUJCt7DNf9ACtpDZSbvRgid9bbl_QFjTAUhOan-Z3Gme2JjOd2fNeKWVsUFvlewggfWuVjYM9uD_FxQaQNW98d_2irZcY79r4ZpfsAxm7o53pHspJQgz4U9TqNPjN19yOZ_qDMDYpO4CzytUuOKogyoQGvDDFWg3abafqoj0xt-OX-KGQWq3iBbOi_mclRy6wa42lLKR4OCgToe75f8"
+            />
+          </div>
+        </div>
+      </header>
+      <!-- Page Content -->
+      <div
+        class="p-margin-mobile md:p-margin-desktop flex-1 flex flex-col gap-6"
+      >
+        <!-- Header Section (Mobile specific) -->
+        <div class="md:hidden">
+          <h1 class="text-headline-sm font-headline-sm text-on-surface">
+            Laporan Jam Pelajaran (JP)
+          </h1>
+          <p class="text-body-md font-body-md text-on-surface-variant mt-1">
+            Review your cumulative teaching hours.
+          </p>
+        </div>
+        <!-- Filter Bar -->
+        <div
+          class="bg-surface-container-lowest p-6 rounded-xl border border-white shadow-[0_20px_20px_-5px_rgba(30,58,138,0.08)] flex flex-col sm:flex-row gap-4 items-end"
+        >
+          <div class="w-full sm:w-auto flex-1">
+            <label
+              class="block text-label-sm font-label-sm text-on-surface-variant uppercase mb-2"
+              for="month"
+              >Bulan</label
+            >
+            <div class="relative">
+              <select
+                class="w-full appearance-none bg-surface border border-outline-variant text-on-surface text-body-md font-body-md rounded-lg pl-4 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                id="month"
+              >
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option selected="" value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+              </select>
+              <div
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-on-surface-variant"
+              >
+                <span class="material-symbols-outlined" data-icon="expand_more"
+                  >expand_more</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="w-full sm:w-auto flex-1">
+            <label
+              class="block text-label-sm font-label-sm text-on-surface-variant uppercase mb-2"
+              for="year"
+              >Tahun</label
+            >
+            <div class="relative">
+              <select
+                class="w-full appearance-none bg-surface border border-outline-variant text-on-surface text-body-md font-body-md rounded-lg pl-4 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                id="year"
+              >
+                <option value="2023">2023</option>
+                <option selected="" value="2024">2024</option>
+                <option value="2025">2025</option>
+              </select>
+              <div
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-on-surface-variant"
+              >
+                <span class="material-symbols-outlined" data-icon="expand_more"
+                  >expand_more</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="w-full sm:w-auto">
+            <button
+              class="w-full bg-primary text-on-primary text-label-md font-label-md px-6 py-2.5 rounded-lg hover:bg-primary-container transition-colors flex items-center justify-center gap-2"
+            >
+              <span
+                class="material-symbols-outlined text-[20px]"
+                data-icon="filter_list"
+                >filter_list</span
+              >
+              Terapkan Filter
+            </button>
+          </div>
+        </div>
+        <!-- Report Table -->
+        <div
+          class="bg-surface-container-lowest rounded-xl border border-white shadow-[0_20px_20px_-5px_rgba(30,58,138,0.08)] overflow-hidden flex flex-col flex-1"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr
+                  class="bg-surface-container-low border-b border-outline-variant/30"
+                >
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-16"
+                  >
+                    No
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider"
+                  >
+                    Materi Modul
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider"
+                  >
+                    Lokasi (Balai)
+                  </th>
+                  <th
+                    class="py-4 px-6 text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider text-right w-32"
+                  >
+                    JP (Jam)
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class="text-body-md font-body-md text-on-surface divide-y divide-outline-variant/30"
+              >
+                <tr
+                  class="hover:bg-surface-container-lowest/50 transition-colors"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">1</td>
+                  <td class="py-4 px-6">
+                    Kepemimpinan Strategis Sektor Publik
+                  </td>
+                  <td class="py-4 px-6 text-on-surface-variant">
+                    BPSDM Provinsi Jawa Barat
+                  </td>
+                  <td class="py-4 px-6 text-right font-medium">8 JP</td>
+                </tr>
+                <tr
+                  class="hover:bg-surface-container-lowest/50 transition-colors"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">2</td>
+                  <td class="py-4 px-6">Manajemen Risiko Keuangan Daerah</td>
+                  <td class="py-4 px-6 text-on-surface-variant">
+                    Pusdiklatwas BPKP Ciawi
+                  </td>
+                  <td class="py-4 px-6 text-right font-medium">6 JP</td>
+                </tr>
+                <tr
+                  class="hover:bg-surface-container-lowest/50 transition-colors"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">3</td>
+                  <td class="py-4 px-6">Etika dan Integritas ASN</td>
+                  <td class="py-4 px-6 text-on-surface-variant">
+                    BPSDM Kementerian Dalam Negeri
+                  </td>
+                  <td class="py-4 px-6 text-right font-medium">4 JP</td>
+                </tr>
+                <tr
+                  class="hover:bg-surface-container-lowest/50 transition-colors"
+                >
+                  <td class="py-4 px-6 text-on-surface-variant">4</td>
+                  <td class="py-4 px-6">
+                    Inovasi Pelayanan Publik Berbasis Digital
+                  </td>
+                  <td class="py-4 px-6 text-on-surface-variant">
+                    BPSDM Provinsi DKI Jakarta
+                  </td>
+                  <td class="py-4 px-6 text-right font-medium">2 JP</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="bg-surface-container border-t border-primary/20">
+                  <td
+                    class="py-4 px-6 text-right text-headline-sm font-headline-sm text-primary"
+                    colspan="3"
+                  >
+                    Total Kumulatif JP:
+                  </td>
+                  <td
+                    class="py-4 px-6 text-right text-headline-sm font-headline-sm text-primary font-bold"
+                  >
+                    20 JP
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="flex justify-end gap-4 mt-2">
+          <button
+            class="border border-primary text-primary bg-transparent text-label-md font-label-md px-6 py-2.5 rounded-lg hover:bg-primary/5 transition-colors flex items-center gap-2"
+          >
+            <span
+              class="material-symbols-outlined text-[20px]"
+              data-icon="download"
+              >download</span
+            >
+            Unduh PDF
+          </button>
+          <button
+            class="bg-secondary text-on-secondary text-label-md font-label-md px-6 py-2.5 rounded-lg hover:bg-secondary-fixed transition-colors flex items-center gap-2 shadow-[0_4px_12px_rgba(0,108,73,0.2)]"
+          >
+            <span
+              class="material-symbols-outlined text-[20px]"
+              data-icon="print"
+              >print</span
+            >
+            Cetak Laporan
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -2,16 +2,12 @@
 
 namespace App\Providers;
 
-use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\ResetUserPassword;
+use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules\Password;
-use Inertia\Inertia;
-use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -29,18 +25,77 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->configureActions();
+        $this->configureAuthentication();
         $this->configureViews();
         $this->configureRateLimiting();
     }
 
     /**
-     * Configure Fortify actions.
+     * Configure custom authentication for legacy database.
+     *
+     * Legacy DB uses MD5 hashed passwords with optional salt.
+     * This replaces Fortify's default bcrypt-based authentication.
      */
-    private function configureActions(): void
+    private function configureAuthentication(): void
     {
-        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
-        Fortify::createUsersUsing(CreateNewUser::class);
+        Fortify::authenticateUsing(function (Request $request): ?User {
+            $user = User::where('user_name', $request->input('user_name'))->first();
+
+            if (! $user) {
+                return null;
+            }
+
+            // Check if user account is active (user_status = 0 means active)
+            if (! $user->isActive()) {
+                return null;
+            }
+
+            // Legacy password verification: MD5 hashing
+            $inputPassword = $request->input('password');
+
+            if ($this->verifyLegacyPassword($inputPassword, $user->user_password, $user->user_salt)) {
+                return $user;
+            }
+
+            return null;
+        });
+    }
+
+    /**
+     * Verify password against legacy MD5 hash.
+     *
+     * Tries multiple common MD5 hashing strategies used by legacy PHP systems:
+     * 1. md5(password) — plain MD5
+     * 2. md5(salt + password) — salt prepended
+     * 3. md5(password + salt) — salt appended
+     * 4. md5(md5(password) + salt) — double MD5 with salt
+     */
+    private function verifyLegacyPassword(string $inputPassword, string $storedHash, ?string $salt): bool
+    {
+        // Strategy 1: Plain MD5 (no salt)
+        if (md5($inputPassword) === $storedHash) {
+            return true;
+        }
+
+        // If salt is available, try salted variants
+        if ($salt !== null && $salt !== '') {
+            // Strategy 2: md5(salt + password)
+            if (md5($salt.$inputPassword) === $storedHash) {
+                return true;
+            }
+
+            // Strategy 3: md5(password + salt)
+            if (md5($inputPassword.$salt) === $storedHash) {
+                return true;
+            }
+
+            // Strategy 4: md5(md5(password) + salt)
+            if (md5(md5($inputPassword).$salt) === $storedHash) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -48,32 +103,9 @@ class FortifyServiceProvider extends ServiceProvider
      */
     private function configureViews(): void
     {
-        Fortify::loginView(fn (Request $request) => Inertia::render('auth/login', [
-            'canResetPassword' => Features::enabled(Features::resetPasswords()),
-            'status' => $request->session()->get('status'),
-        ]));
+        Fortify::loginView(fn () => view('auth.login'));
 
-        Fortify::resetPasswordView(fn (Request $request) => Inertia::render('auth/reset-password', [
-            'email' => $request->email,
-            'token' => $request->route('token'),
-            'passwordRules' => Password::defaults()->toPasswordRulesString(),
-        ]));
-
-        Fortify::requestPasswordResetLinkView(fn (Request $request) => Inertia::render('auth/forgot-password', [
-            'status' => $request->session()->get('status'),
-        ]));
-
-        Fortify::verifyEmailView(fn (Request $request) => Inertia::render('auth/verify-email', [
-            'status' => $request->session()->get('status'),
-        ]));
-
-        Fortify::registerView(fn () => Inertia::render('auth/register', [
-            'passwordRules' => Password::defaults()->toPasswordRulesString(),
-        ]));
-
-        Fortify::twoFactorChallengeView(fn () => Inertia::render('auth/two-factor-challenge'));
-
-        Fortify::confirmPasswordView(fn () => Inertia::render('auth/confirm-password'));
+        Fortify::confirmPasswordView(fn () => view('auth.confirm-password'));
     }
 
     /**
@@ -81,20 +113,10 @@ class FortifyServiceProvider extends ServiceProvider
      */
     private function configureRateLimiting(): void
     {
-        RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
-        });
-
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
 
             return Limit::perMinute(5)->by($throttleKey);
-        });
-
-        RateLimiter::for('passkeys', function (Request $request) {
-            return Limit::perMinute(10)->by(
-                ($request->input('credential.id') ?: $request->session()->getId()).'|'.$request->ip(),
-            );
         });
     }
 }

@@ -1,16 +1,15 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/react-starter-kit",
+    "name": "wicenter/wi-center-l12",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "WI-Center Application built with Laravel 12 Blade and TailwindCSS.",
     "keywords": [
         "laravel",
-        "framework"
+        "wi-center"
     ],
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "inertiajs/inertia-laravel": "^3.0",
         "laravel/chisel": "^0.1.0",
         "laravel/fortify": "^1.37.2",
         "laravel/framework": "^13.7",
@@ -64,7 +63,6 @@
             "Composer\\Config::disableProcessTimeout",
             "npm run lint:check",
             "npm run format:check",
-            "npm run types:check",
             "@test"
         ],
         "test": [

@@ -32,7 +32,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Username / Email
+    | Username
     |--------------------------------------------------------------------------
     |
     | This value defines which model attribute should be considered as your
@@ -45,9 +45,9 @@ return [
     |
     */
 
-    'username' => 'email',
+    'username' => 'user_name',
 
-    'email' => 'email',
+    'email' => 'user_name',
 
     /*
     |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ return [
     |
     */
 
-    'lowercase_usernames' => true,
+    'lowercase_usernames' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -161,17 +161,25 @@ return [
     */
 
     'features' => [
-        Features::registration(),
-        Features::resetPasswords(),
-        Features::emailVerification(),
-        Features::twoFactorAuthentication([
-            'confirm' => true,
-            'confirmPassword' => true,
-            // 'window' => 0
-        ]),
-        Features::passkeys([
-            'confirmPassword' => true,
-        ]),
+        // Disabled: Legacy DB has no registration flow
+        // Features::registration(),
+
+        // Disabled: Legacy DB has no password_reset_tokens table
+        // Features::resetPasswords(),
+
+        // Disabled: Legacy DB has no email_verified_at column
+        // Features::emailVerification(),
+
+        // Disabled: Legacy DB has no two_factor columns
+        // Features::twoFactorAuthentication([
+        //     'confirm' => true,
+        //     'confirmPassword' => true,
+        // ]),
+
+        // Disabled: Legacy DB has no passkey support
+        // Features::passkeys([
+        //     'confirmPassword' => true,
+        // ]),
     ],
 
 ];

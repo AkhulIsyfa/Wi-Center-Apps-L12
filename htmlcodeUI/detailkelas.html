@@ -1,0 +1,1619 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>WI-Center - Detail Kelas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#dce1ff",
+              "on-primary-container": "#90a8ff",
+              primary: "#00236f",
+              "secondary-fixed-dim": "#4edea3",
+              "inverse-surface": "#213145",
+              "inverse-on-surface": "#eaf1ff",
+              background: "#f8f9ff",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#82abff",
+              "on-tertiary-fixed-variant": "#004395",
+              tertiary: "#00285e",
+              "on-secondary-container": "#00714d",
+              "surface-container-low": "#eff4ff",
+              "outline-variant": "#c5c5d3",
+              "primary-fixed-dim": "#b6c4ff",
+              error: "#ba1a1a",
+              "on-surface": "#0b1c30",
+              "surface-dim": "#cbdbf5",
+              "on-secondary-fixed-variant": "#005236",
+              outline: "#757682",
+              "on-tertiary-fixed": "#001a42",
+              "on-background": "#0b1c30",
+              secondary: "#006c49",
+              "surface-container-highest": "#d3e4fe",
+              "secondary-fixed": "#6ffbbe",
+              "surface-tint": "#4059aa",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#444651",
+              "tertiary-fixed-dim": "#adc6ff",
+              "tertiary-fixed": "#d8e2ff",
+              "primary-container": "#1e3a8a",
+              "on-primary-fixed": "#00164e",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#d3e4fe",
+              "tertiary-container": "#003d88",
+              "surface-bright": "#f8f9ff",
+              "inverse-primary": "#b6c4ff",
+              "on-error": "#ffffff",
+              surface: "#f8f9ff",
+              "on-primary-fixed-variant": "#264191",
+              "on-secondary-fixed": "#002113",
+              "surface-container": "#e5eeff",
+              "secondary-container": "#6cf8bb",
+              "surface-container-high": "#dce9ff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "16px",
+              "topbar-height": "72px",
+              gutter: "24px",
+              "sidebar-collapsed": "80px",
+              "margin-desktop": "32px",
+              "sidebar-width": "260px",
+              "base-unit": "8px",
+            },
+            fontFamily: {
+              "headline-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-lg": ["Inter"],
+              "headline-lg": ["Inter"],
+              "label-md": ["Inter"],
+              "label-sm": ["Inter"],
+            },
+            fontSize: {
+              "headline-sm": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-lg": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "600" },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .material-symbols-outlined.fill {
+        font-variation-settings:
+          "FILL" 1,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      /* Custom scrollbar for tab navigation */
+      .tab-scroll::-webkit-scrollbar {
+        height: 4px;
+      }
+      .tab-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .tab-scroll::-webkit-scrollbar-thumb {
+        background: rgba(30, 58, 138, 0.2);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-surface font-body-md min-h-screen flex antialiased"
+  >
+    <!-- SideNavBar -->
+    <aside
+      class="hidden md:flex bg-inverse-surface text-inverse-on-surface fixed left-0 top-0 h-screen w-sidebar-width shadow-xl flex-col py-8 gap-2 z-40"
+    >
+      <div class="px-6 mb-8 flex flex-col gap-1">
+        <h1 class="text-headline-sm font-headline-sm font-black text-white">
+          WI-Center
+        </h1>
+        <p class="text-label-md font-label-md text-inverse-on-surface/70">
+          Expert Facilitator
+        </p>
+      </div>
+      <nav class="flex flex-col gap-1 w-full px-2">
+        <a
+          class="flex items-center gap-4 text-inverse-on-surface/80 hover:text-white px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-200"
+          href="dashboard.html"
+        >
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="text-label-md font-label-md">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-4 bg-white/10 text-white font-semibold border-l-4 border-primary-fixed px-4 py-3 rounded-r-lg Active: scale-[0.98] transition-transform"
+          href="daftarkelas.html"
+        >
+          <span class="material-symbols-outlined">school</span>
+          <span class="text-label-md font-label-md">Kelas Saya</span>
+        </a>
+        <a
+          class="flex items-center gap-4 text-inverse-on-surface/80 hover:text-white px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-200"
+          href="jadwalmengajar.html"
+        >
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span class="text-label-md font-label-md">Jadwal</span>
+        </a>
+        <a
+          class="flex items-center gap-4 text-inverse-on-surface/80 hover:text-white px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-200"
+          href="report.html"
+        >
+          <span class="material-symbols-outlined">analytics</span>
+          <span class="text-label-md font-label-md">Report</span>
+        </a>
+      </nav>
+      <div class="mt-auto px-2 flex flex-col gap-1">
+        <a
+          class="flex items-center gap-4 text-inverse-on-surface/80 hover:text-white px-4 py-3 rounded-lg hover:bg-white/10 transition-all duration-200"
+          href="profil.html"
+        >
+          <span class="material-symbols-outlined">account_circle</span>
+          <span class="text-label-md font-label-md">Profil</span>
+        </a>
+        <a
+          class="flex items-center gap-4 text-error-container hover:text-error-container px-4 py-3 rounded-lg hover:bg-error/20 transition-all duration-200"
+          href="login.html"
+        >
+          <span class="material-symbols-outlined">logout</span>
+          <span class="text-label-md font-label-md">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-1 md:ml-sidebar-width min-h-screen bg-background">
+      <!-- LAYER 1: Tampilan utama halaman detail kelas -->
+      <section class="bg-slate-50 border-b border-slate-200">
+        <!-- Top Bar -->
+        <header
+          class="h-topbar-height bg-white/90 backdrop-blur border-b border-slate-200 px-7 flex items-center justify-between"
+        >
+          <div class="relative w-full max-w-md">
+            <span
+              class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+              >search</span
+            >
+            <input
+              type="text"
+              placeholder="Search..."
+              class="w-full rounded-full border border-slate-300 bg-white pl-12 pr-4 py-2.5 focus:ring-primary focus:border-primary"
+            />
+          </div>
+
+          <div class="flex items-center gap-4">
+            <button
+              class="relative p-2 rounded-full hover:bg-slate-100 text-slate-700"
+            >
+              <span class="material-symbols-outlined">notifications</span>
+              <span
+                class="absolute top-2 right-2 w-2 h-2 bg-red-600 rounded-full"
+              ></span>
+            </button>
+
+            <img
+              alt="User Avatar"
+              class="w-10 h-10 rounded-full object-cover border border-slate-200"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPRtSjcxBr2FbV_qNPnB9K06vNSuHKRq8s7RB2fG2oGsf7qpcMg2ZtCd5XTZmla1dzFfdrMgtZuEzPy3b2MU0ir2CjsZPV8zTUTgMV8GUkOLnPbiSY2eeAp2xNDW6ur25Elb9TO-FOsr955XeDPAeUqi1g1V_2wKZbi2Pnx_prG3SSvRdKkMKuXbGbjwwHPT2V5dmW3TOyzzvlyq_dkKBzIO5lOsZipdQZY-oJWBdc_hf7TJ8VPJOLoYlSkUyeINm564-khHwXL9M"
+            />
+          </div>
+        </header>
+
+        <!-- Header Detail Kelas -->
+        <div class="px-7 py-6">
+          <div class="mb-5 flex items-center gap-2 text-sm">
+            <a
+              href="daftarkelas.html"
+              class="font-semibold text-slate-700 hover:text-primary"
+            >
+              Kelas Saya
+            </a>
+            <span class="material-symbols-outlined text-base text-slate-400"
+              >chevron_right</span
+            >
+            <span class="font-semibold text-primary"
+              >Pelatihan TOT Angkatan 3</span
+            >
+          </div>
+
+          <div
+            class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6"
+          >
+            <div
+              class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5"
+            >
+              <div>
+                <span
+                  class="inline-flex items-center gap-2 rounded-full bg-green-50 text-green-700 border border-green-200 px-3 py-1 text-xs font-semibold"
+                >
+                  <span class="w-2 h-2 rounded-full bg-green-600"></span>
+                  Aktif
+                </span>
+
+                <h1 class="text-3xl font-bold text-primary mt-3">
+                  Pelatihan TOT Angkatan 3
+                </h1>
+
+                <div class="flex flex-wrap gap-5 text-sm text-slate-600 mt-4">
+                  <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base"
+                      >calendar_month</span
+                    >
+                    1 - 15 Mei 2024
+                  </span>
+                  <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base"
+                      >groups</span
+                    >
+                    25 Peserta
+                  </span>
+                  <span class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base"
+                      >location_on</span
+                    >
+                    Ruang Kelas A / Online Hybrid
+                  </span>
+                </div>
+              </div>
+
+              <button
+                class="inline-flex items-center justify-center gap-2 rounded-lg border border-primary px-5 py-2.5 text-primary font-semibold hover:bg-primary/5"
+              >
+                <span class="material-symbols-outlined text-lg">edit</span>
+                Edit Kelas
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAYER 2: Bar menu 8 tab + area isi menu -->
+
+      <!-- Tab Navigation -->
+      <div
+        class="bg-white border-b border-slate-200 px-7 overflow-x-auto tab-scroll"
+      >
+        <nav class="flex gap-8 min-w-max" id="classTabs">
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-primary"
+            data-tab="ringkasan"
+          >
+            Ringkasan
+          </button>
+
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-primary text-primary"
+            data-tab="materi"
+          >
+            Materi
+          </button>
+
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-primary"
+            data-tab="peserta"
+          >
+            Peserta
+          </button>
+
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-primary"
+            data-tab="diskusi"
+          >
+            Diskusi
+          </button>
+
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-primary"
+            data-tab="penilaian"
+          >
+            Penilaian
+          </button>
+
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-primary"
+            data-tab="evaluasi"
+          >
+            Evaluasi
+          </button>
+
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-primary"
+            data-tab="buat-tugas"
+          >
+            + Buat Tugas
+          </button>
+
+          <button
+            class="tab-btn py-5 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-primary"
+            data-tab="pengumpulan-tugas"
+          >
+            Pengumpulan Tugas
+          </button>
+        </nav>
+      </div>
+
+      <!-- Tab Content Wrapper -->
+      <div class="p-7 bg-slate-50 min-h-[calc(100vh-260px)]">
+        <!-- TAB 1: RINGKASAN -->
+        <section id="tab-ringkasan" class="tab-content hidden space-y-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+          >
+            <div>
+              <h2 class="text-2xl font-bold text-primary">Ringkasan Kelas</h2>
+              <p class="text-slate-500 mt-1">
+                Monitoring umum aktivitas Pelatihan TOT Angkatan 3.
+              </p>
+            </div>
+            <button
+              class="px-4 py-2 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5"
+            >
+              Unduh Ringkasan
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-center justify-between">
+                <p class="text-sm text-slate-500">Total Peserta</p>
+                <span class="material-symbols-outlined text-primary"
+                  >groups</span
+                >
+              </div>
+              <h3 class="text-3xl font-bold text-slate-900 mt-3">25</h3>
+              <p class="text-sm text-green-600 mt-1">
+                24 aktif, 1 perlu perhatian
+              </p>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-center justify-between">
+                <p class="text-sm text-slate-500">Materi Tersedia</p>
+                <span class="material-symbols-outlined text-primary"
+                  >folder</span
+                >
+              </div>
+              <h3 class="text-3xl font-bold text-slate-900 mt-3">8</h3>
+              <p class="text-sm text-slate-500 mt-1">
+                PDF, PPTX, dan referensi
+              </p>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-center justify-between">
+                <p class="text-sm text-slate-500">Tugas Aktif</p>
+                <span class="material-symbols-outlined text-primary"
+                  >assignment</span
+                >
+              </div>
+              <h3 class="text-3xl font-bold text-slate-900 mt-3">3</h3>
+              <p class="text-sm text-orange-600 mt-1">
+                1 tugas mendekati deadline
+              </p>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-center justify-between">
+                <p class="text-sm text-slate-500">Progress Kelas</p>
+                <span class="material-symbols-outlined text-primary"
+                  >trending_up</span
+                >
+              </div>
+              <h3 class="text-3xl font-bold text-slate-900 mt-3">65%</h3>
+              <div class="w-full bg-slate-100 rounded-full h-2 mt-3">
+                <div
+                  class="bg-primary h-2 rounded-full"
+                  style="width: 65%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div
+              class="lg:col-span-2 bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <h3 class="text-lg font-bold text-primary mb-5">
+                Aktivitas Terbaru
+              </h3>
+
+              <div class="space-y-5">
+                <div class="flex gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-50 text-primary flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >upload_file</span
+                    >
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-800">
+                      Materi baru diunggah
+                    </p>
+                    <p class="text-sm text-slate-500">
+                      02 - Teknik Komunikasi Efektif.pdf ditambahkan pada Modul
+                      2.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1">3 Mei 2024, 09:15</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-green-50 text-green-700 flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >assignment_turned_in</span
+                    >
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-800">
+                      18 peserta mengumpulkan tugas
+                    </p>
+                    <p class="text-sm text-slate-500">
+                      Tugas Refleksi Modul 1 sudah mulai masuk.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1">4 Mei 2024, 14:30</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-orange-50 text-orange-700 flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined text-sm">forum</span>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-slate-800">
+                      Diskusi baru dibuat
+                    </p>
+                    <p class="text-sm text-slate-500">
+                      Peserta menanyakan teknis penyusunan rancangan
+                      pembelajaran.
+                    </p>
+                    <p class="text-xs text-slate-400 mt-1">5 Mei 2024, 10:05</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <h3 class="text-lg font-bold text-primary mb-5">
+                Jadwal Berikutnya
+              </h3>
+
+              <div class="space-y-5">
+                <div class="border-l-4 border-primary pl-4">
+                  <p class="text-sm font-bold text-primary">6 Mei 2024</p>
+                  <p class="font-semibold text-slate-800 mt-1">
+                    Praktik Micro Teaching
+                  </p>
+                  <p class="text-sm text-slate-500">09:00 - 12:00 WIB</p>
+                </div>
+
+                <div class="border-l-4 border-slate-300 pl-4">
+                  <p class="text-sm font-bold text-slate-600">8 Mei 2024</p>
+                  <p class="font-semibold text-slate-800 mt-1">
+                    Review Rencana Pembelajaran
+                  </p>
+                  <p class="text-sm text-slate-500">13:00 - 15:00 WIB</p>
+                </div>
+
+                <div class="border-l-4 border-slate-300 pl-4">
+                  <p class="text-sm font-bold text-slate-600">10 Mei 2024</p>
+                  <p class="font-semibold text-slate-800 mt-1">
+                    Evaluasi Akhir
+                  </p>
+                  <p class="text-sm text-slate-500">Online Hybrid</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: MATERI -->
+        <section id="tab-materi" class="tab-content space-y-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+          >
+            <h2 class="text-2xl font-bold text-primary">Materi Pembelajaran</h2>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl"
+                >
+                  search
+                </span>
+                <input
+                  type="text"
+                  placeholder="Cari materi..."
+                  class="w-full sm:w-72 rounded-lg border border-slate-300 pl-10 pr-4 py-2 focus:ring-primary focus:border-primary"
+                />
+              </div>
+
+              <button
+                class="bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-900 flex items-center gap-2"
+              >
+                <span class="material-symbols-outlined text-lg">upload</span>
+                Upload Materi
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div
+                  class="w-12 h-12 rounded-lg bg-slate-50 border flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-orange-600"
+                    >slideshow</span
+                  >
+                </div>
+                <button class="text-slate-500 hover:text-slate-900">
+                  <span class="material-symbols-outlined">more_vert</span>
+                </button>
+              </div>
+              <h3 class="font-bold text-slate-900">
+                01 - Pengantar Training of Trainers.pptx
+              </h3>
+              <p class="text-sm text-slate-500 mt-2">
+                Modul 1 • Diunggah 1 Mei 2024
+              </p>
+              <div class="border-t mt-6 pt-4 flex justify-between">
+                <button
+                  class="text-sm font-semibold text-primary hover:underline"
+                >
+                  Lihat
+                </button>
+                <button
+                  class="text-sm font-semibold text-primary hover:underline"
+                >
+                  Unduh
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div
+                  class="w-12 h-12 rounded-lg bg-slate-50 border flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-red-600"
+                    >picture_as_pdf</span
+                  >
+                </div>
+                <button class="text-slate-500 hover:text-slate-900">
+                  <span class="material-symbols-outlined">more_vert</span>
+                </button>
+              </div>
+              <h3 class="font-bold text-slate-900">
+                Silabus_dan_Jadwal_Lengkap_TOT_Batch
+              </h3>
+              <p class="text-sm text-slate-500 mt-2">
+                Referensi • Diunggah 1 Mei 2024
+              </p>
+              <div class="border-t mt-6 pt-4 flex justify-between">
+                <button
+                  class="text-sm font-semibold text-primary hover:underline"
+                >
+                  Lihat
+                </button>
+                <button
+                  class="text-sm font-semibold text-primary hover:underline"
+                >
+                  Unduh
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-start justify-between mb-6">
+                <div
+                  class="w-12 h-12 rounded-lg bg-slate-50 border flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-red-600"
+                    >picture_as_pdf</span
+                  >
+                </div>
+                <button class="text-slate-500 hover:text-slate-900">
+                  <span class="material-symbols-outlined">more_vert</span>
+                </button>
+              </div>
+              <h3 class="font-bold text-slate-900">
+                02 - Teknik Komunikasi Efektif.pdf
+              </h3>
+              <p class="text-sm text-slate-500 mt-2">
+                Modul 2 • Diunggah 3 Mei 2024
+              </p>
+              <div class="border-t mt-6 pt-4 flex justify-between">
+                <button
+                  class="text-sm font-semibold text-primary hover:underline"
+                >
+                  Lihat
+                </button>
+                <button
+                  class="text-sm font-semibold text-primary hover:underline"
+                >
+                  Unduh
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 3: PESERTA -->
+        <section id="tab-peserta" class="tab-content hidden space-y-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+          >
+            <div>
+              <h2 class="text-2xl font-bold text-primary">Peserta Kelas</h2>
+              <p class="text-slate-500 mt-1">
+                Daftar peserta yang terdaftar pada Pelatihan TOT Angkatan 3.
+              </p>
+            </div>
+
+            <button
+              class="bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-900 flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined text-lg">download</span>
+              Export Peserta
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Total Peserta</p>
+              <h3 class="text-3xl font-bold text-slate-900 mt-2">25</h3>
+            </div>
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Aktif Mengikuti</p>
+              <h3 class="text-3xl font-bold text-green-700 mt-2">24</h3>
+            </div>
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Perlu Perhatian</p>
+              <h3 class="text-3xl font-bold text-orange-600 mt-2">1</h3>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden"
+          >
+            <div
+              class="p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b"
+            >
+              <input
+                type="text"
+                placeholder="Cari nama peserta, NIP, atau instansi..."
+                class="w-full md:w-96 rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+              />
+
+              <select
+                class="rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+              >
+                <option>Semua Status</option>
+                <option>Aktif</option>
+                <option>Perlu Perhatian</option>
+                <option>Belum Aktif</option>
+              </select>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-slate-50 text-slate-600">
+                  <tr>
+                    <th class="text-left px-5 py-4">Nama Peserta</th>
+                    <th class="text-left px-5 py-4">Instansi</th>
+                    <th class="text-left px-5 py-4">Kehadiran</th>
+                    <th class="text-left px-5 py-4">Tugas</th>
+                    <th class="text-left px-5 py-4">Nilai Sementara</th>
+                    <th class="text-left px-5 py-4">Status</th>
+                    <th class="text-left px-5 py-4">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Ahmad Fauzi
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">BPSDM PU</td>
+                    <td class="px-5 py-4 text-slate-600">95%</td>
+                    <td class="px-5 py-4 text-slate-600">3/3</td>
+                    <td class="px-5 py-4 text-slate-600">88</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700"
+                        >Aktif</span
+                      >
+                    </td>
+                    <td class="px-5 py-4">
+                      <button
+                        class="text-primary font-semibold hover:underline"
+                      >
+                        Detail
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Siti Rahma
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">Balai Wilayah II</td>
+                    <td class="px-5 py-4 text-slate-600">90%</td>
+                    <td class="px-5 py-4 text-slate-600">3/3</td>
+                    <td class="px-5 py-4 text-slate-600">91</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700"
+                        >Aktif</span
+                      >
+                    </td>
+                    <td class="px-5 py-4">
+                      <button
+                        class="text-primary font-semibold hover:underline"
+                      >
+                        Detail
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Budi Santoso
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">Pusdiklat SDA</td>
+                    <td class="px-5 py-4 text-slate-600">60%</td>
+                    <td class="px-5 py-4 text-slate-600">1/3</td>
+                    <td class="px-5 py-4 text-slate-600">72</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700"
+                        >Perlu Perhatian</span
+                      >
+                    </td>
+                    <td class="px-5 py-4">
+                      <button
+                        class="text-primary font-semibold hover:underline"
+                      >
+                        Detail
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 4: DISKUSI -->
+        <section id="tab-diskusi" class="tab-content hidden space-y-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+          >
+            <div>
+              <h2 class="text-2xl font-bold text-primary">Diskusi Kelas</h2>
+              <p class="text-slate-500 mt-1">
+                Forum diskusi antara fasilitator dan peserta pelatihan.
+              </p>
+            </div>
+
+            <button
+              class="bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-900 flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined text-lg">add</span>
+              Buat Topik
+            </button>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-4"
+          >
+            <input
+              type="text"
+              placeholder="Cari topik diskusi..."
+              class="w-full md:w-96 rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+            />
+
+            <select
+              class="rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+            >
+              <option>Semua Diskusi</option>
+              <option>Belum Terjawab</option>
+              <option>Terjawab</option>
+              <option>Penting</option>
+            </select>
+          </div>
+
+          <div class="space-y-4">
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-primary"
+                      >Penting</span
+                    >
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700"
+                      >Terjawab</span
+                    >
+                  </div>
+                  <h3 class="text-lg font-bold text-slate-900">
+                    Pertanyaan tentang rancangan pembelajaran TOT
+                  </h3>
+                  <p class="text-sm text-slate-500 mt-2">
+                    Diskusi terkait struktur rancangan pembelajaran, metode
+                    penyampaian, dan format evaluasi.
+                  </p>
+                  <div class="flex gap-5 text-sm text-slate-500 mt-4">
+                    <span>Oleh: Ahmad Fauzi</span>
+                    <span>12 balasan</span>
+                    <span>5 Mei 2024</span>
+                  </div>
+                </div>
+                <button class="text-primary font-semibold hover:underline">
+                  Buka
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <div class="flex items-center gap-2 mb-2">
+                    <span
+                      class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700"
+                      >Belum Terjawab</span
+                    >
+                  </div>
+                  <h3 class="text-lg font-bold text-slate-900">
+                    Teknis pengumpulan tugas praktik micro teaching
+                  </h3>
+                  <p class="text-sm text-slate-500 mt-2">
+                    Peserta menanyakan apakah file video praktik dapat
+                    dikumpulkan melalui link cloud storage.
+                  </p>
+                  <div class="flex gap-5 text-sm text-slate-500 mt-4">
+                    <span>Oleh: Siti Rahma</span>
+                    <span>3 balasan</span>
+                    <span>6 Mei 2024</span>
+                  </div>
+                </div>
+                <button class="text-primary font-semibold hover:underline">
+                  Buka
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: PENILAIAN -->
+        <section id="tab-penilaian" class="tab-content hidden space-y-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+          >
+            <div>
+              <h2 class="text-2xl font-bold text-primary">Penilaian Peserta</h2>
+              <p class="text-slate-500 mt-1">
+                Rekap nilai tugas, praktik, evaluasi, dan nilai akhir peserta.
+              </p>
+            </div>
+
+            <button
+              class="bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-900 flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined text-lg">download</span>
+              Export Nilai
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Rata-rata Kelas</p>
+              <h3 class="text-3xl font-bold text-primary mt-2">84.5</h3>
+            </div>
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Sudah Dinilai</p>
+              <h3 class="text-3xl font-bold text-green-700 mt-2">18</h3>
+            </div>
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Belum Dinilai</p>
+              <h3 class="text-3xl font-bold text-orange-600 mt-2">7</h3>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden"
+          >
+            <div
+              class="p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b"
+            >
+              <select
+                class="rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+              >
+                <option>Semua Komponen Nilai</option>
+                <option>Tugas Modul 1</option>
+                <option>Praktik Micro Teaching</option>
+                <option>Evaluasi Akhir</option>
+              </select>
+
+              <button
+                class="px-4 py-2 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5"
+              >
+                Simpan Perubahan
+              </button>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-slate-50 text-slate-600">
+                  <tr>
+                    <th class="text-left px-5 py-4">Nama Peserta</th>
+                    <th class="text-left px-5 py-4">Tugas 1</th>
+                    <th class="text-left px-5 py-4">Tugas 2</th>
+                    <th class="text-left px-5 py-4">Praktik</th>
+                    <th class="text-left px-5 py-4">Evaluasi</th>
+                    <th class="text-left px-5 py-4">Nilai Akhir</th>
+                    <th class="text-left px-5 py-4">Status</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Ahmad Fauzi
+                    </td>
+                    <td class="px-5 py-4">85</td>
+                    <td class="px-5 py-4">88</td>
+                    <td class="px-5 py-4">90</td>
+                    <td class="px-5 py-4">87</td>
+                    <td class="px-5 py-4 font-bold text-primary">88</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700"
+                        >Lengkap</span
+                      >
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Siti Rahma
+                    </td>
+                    <td class="px-5 py-4">90</td>
+                    <td class="px-5 py-4">92</td>
+                    <td class="px-5 py-4">91</td>
+                    <td class="px-5 py-4">90</td>
+                    <td class="px-5 py-4 font-bold text-primary">91</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700"
+                        >Lengkap</span
+                      >
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Budi Santoso
+                    </td>
+                    <td class="px-5 py-4">72</td>
+                    <td class="px-5 py-4">-</td>
+                    <td class="px-5 py-4">-</td>
+                    <td class="px-5 py-4">-</td>
+                    <td class="px-5 py-4 font-bold text-orange-600">72</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700"
+                        >Belum Lengkap</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 6: EVALUASI -->
+        <section id="tab-evaluasi" class="tab-content hidden space-y-6">
+          <div>
+            <h2 class="text-2xl font-bold text-primary">Evaluasi Pelatihan</h2>
+            <p class="text-slate-500 mt-1">
+              Hasil evaluasi peserta terhadap materi, fasilitator, metode, dan
+              penyelenggaraan.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Skor Fasilitator</p>
+              <h3 class="text-3xl font-bold text-primary mt-2">4.7/5</h3>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Skor Materi</p>
+              <h3 class="text-3xl font-bold text-primary mt-2">4.5/5</h3>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Skor Metode</p>
+              <h3 class="text-3xl font-bold text-primary mt-2">4.6/5</h3>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Respon Masuk</p>
+              <h3 class="text-3xl font-bold text-primary mt-2">21/25</h3>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <h3 class="text-lg font-bold text-primary mb-5">
+                Indikator Evaluasi
+              </h3>
+
+              <div class="space-y-5">
+                <div>
+                  <div class="flex justify-between text-sm mb-2">
+                    <span class="font-semibold text-slate-700"
+                      >Kesesuaian Materi</span
+                    >
+                    <span class="text-slate-500">90%</span>
+                  </div>
+                  <div class="w-full bg-slate-100 rounded-full h-2">
+                    <div
+                      class="bg-primary h-2 rounded-full"
+                      style="width: 90%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-sm mb-2">
+                    <span class="font-semibold text-slate-700"
+                      >Kejelasan Penyampaian</span
+                    >
+                    <span class="text-slate-500">94%</span>
+                  </div>
+                  <div class="w-full bg-slate-100 rounded-full h-2">
+                    <div
+                      class="bg-primary h-2 rounded-full"
+                      style="width: 94%"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-sm mb-2">
+                    <span class="font-semibold text-slate-700"
+                      >Interaksi Kelas</span
+                    >
+                    <span class="text-slate-500">88%</span>
+                  </div>
+                  <div class="w-full bg-slate-100 rounded-full h-2">
+                    <div
+                      class="bg-primary h-2 rounded-full"
+                      style="width: 88%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+            >
+              <h3 class="text-lg font-bold text-primary mb-5">
+                Komentar Peserta
+              </h3>
+
+              <div class="space-y-4">
+                <div class="border-l-4 border-primary pl-4">
+                  <p class="text-slate-700">
+                    “Materi sangat relevan dengan kebutuhan sebagai fasilitator
+                    pelatihan.”
+                  </p>
+                  <p class="text-xs text-slate-400 mt-2">Peserta 01</p>
+                </div>
+
+                <div class="border-l-4 border-primary pl-4">
+                  <p class="text-slate-700">
+                    “Diskusi dan praktik perlu ditambah agar peserta lebih
+                    memahami metode micro teaching.”
+                  </p>
+                  <p class="text-xs text-slate-400 mt-2">Peserta 08</p>
+                </div>
+
+                <div class="border-l-4 border-primary pl-4">
+                  <p class="text-slate-700">
+                    “Penyampaian fasilitator jelas dan mudah diikuti.”
+                  </p>
+                  <p class="text-xs text-slate-400 mt-2">Peserta 14</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 7: BUAT TUGAS -->
+        <section id="tab-buat-tugas" class="tab-content hidden space-y-6">
+          <div>
+            <h2 class="text-2xl font-bold text-primary">Buat Tugas</h2>
+            <p class="text-slate-500 mt-1">
+              Form pembuatan tugas untuk peserta Pelatihan TOT Angkatan 3.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-6 shadow-sm border border-slate-100"
+          >
+            <form class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div class="lg:col-span-2">
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Judul Tugas</label
+                >
+                <input
+                  type="text"
+                  placeholder="Contoh: Tugas Refleksi Modul 1"
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Modul Terkait</label
+                >
+                <select
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                >
+                  <option>Pilih Modul</option>
+                  <option>Modul 1 - Pengantar TOT</option>
+                  <option>Modul 2 - Teknik Komunikasi Efektif</option>
+                  <option>Modul 3 - Micro Teaching</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Jenis Tugas</label
+                >
+                <select
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                >
+                  <option>Individu</option>
+                  <option>Kelompok</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Deadline</label
+                >
+                <input
+                  type="datetime-local"
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Bobot Nilai</label
+                >
+                <input
+                  type="number"
+                  placeholder="Contoh: 20"
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                />
+                <p class="text-xs text-slate-400 mt-1">
+                  Dalam persen terhadap nilai akhir.
+                </p>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Format Pengumpulan</label
+                >
+                <select
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                >
+                  <option>PDF</option>
+                  <option>DOCX</option>
+                  <option>PPTX</option>
+                  <option>ZIP</option>
+                  <option>Link Video</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Status Publikasi</label
+                >
+                <select
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                >
+                  <option>Draft</option>
+                  <option>Publish ke Peserta</option>
+                </select>
+              </div>
+
+              <div class="lg:col-span-2">
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Deskripsi / Instruksi Tugas</label
+                >
+                <textarea
+                  rows="5"
+                  placeholder="Tuliskan instruksi pengerjaan tugas secara jelas..."
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                ></textarea>
+              </div>
+
+              <div class="lg:col-span-2">
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Rubrik Penilaian</label
+                >
+                <textarea
+                  rows="4"
+                  placeholder="Contoh: Kesesuaian isi 40%, struktur 30%, argumentasi 20%, kerapihan 10%..."
+                  class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+                ></textarea>
+              </div>
+
+              <div class="lg:col-span-2">
+                <label class="block text-sm font-semibold text-slate-700 mb-2"
+                  >Lampiran Pendukung</label
+                >
+                <div
+                  class="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center bg-slate-50"
+                >
+                  <span
+                    class="material-symbols-outlined text-4xl text-slate-400"
+                    >upload_file</span
+                  >
+                  <p class="font-semibold text-slate-700 mt-2">
+                    Klik untuk upload file
+                  </p>
+                  <p class="text-sm text-slate-500">
+                    PDF, DOCX, PPTX, atau ZIP
+                  </p>
+                </div>
+              </div>
+
+              <div class="lg:col-span-2 flex justify-end gap-3">
+                <button
+                  type="button"
+                  class="px-5 py-2 rounded-lg border border-slate-300 text-slate-700 font-semibold hover:bg-slate-50"
+                >
+                  Simpan Draft
+                </button>
+                <button
+                  type="button"
+                  class="px-5 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-blue-900"
+                >
+                  Publikasikan Tugas
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- TAB 8: PENGUMPULAN TUGAS -->
+        <section
+          id="tab-pengumpulan-tugas"
+          class="tab-content hidden space-y-6"
+        >
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+          >
+            <div>
+              <h2 class="text-2xl font-bold text-primary">Pengumpulan Tugas</h2>
+              <p class="text-slate-500 mt-1">
+                Monitoring pengumpulan tugas peserta dan proses koreksi.
+              </p>
+            </div>
+
+            <button
+              class="bg-primary text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-900 flex items-center gap-2"
+            >
+              <span class="material-symbols-outlined text-lg">download</span>
+              Export Rekap
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-5">
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Total Peserta</p>
+              <h3 class="text-3xl font-bold text-slate-900 mt-2">25</h3>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Terkumpul</p>
+              <h3 class="text-3xl font-bold text-green-700 mt-2">18</h3>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Belum Mengumpulkan</p>
+              <h3 class="text-3xl font-bold text-orange-600 mt-2">7</h3>
+            </div>
+
+            <div
+              class="bg-white rounded-xl p-5 shadow-sm border border-slate-100"
+            >
+              <p class="text-sm text-slate-500">Terlambat</p>
+              <h3 class="text-3xl font-bold text-red-600 mt-2">2</h3>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden"
+          >
+            <div class="p-5 flex flex-col md:flex-row gap-4 border-b">
+              <select
+                class="rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+              >
+                <option>Tugas Refleksi Modul 1</option>
+                <option>Praktik Micro Teaching</option>
+                <option>Rancangan Pembelajaran</option>
+              </select>
+
+              <select
+                class="rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+              >
+                <option>Semua Status</option>
+                <option>Terkumpul</option>
+                <option>Terlambat</option>
+                <option>Belum Mengumpulkan</option>
+                <option>Sudah Dinilai</option>
+              </select>
+
+              <input
+                type="text"
+                placeholder="Cari peserta..."
+                class="w-full md:w-80 rounded-lg border border-slate-300 px-4 py-2 focus:ring-primary focus:border-primary"
+              />
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-slate-50 text-slate-600">
+                  <tr>
+                    <th class="text-left px-5 py-4">Nama Peserta</th>
+                    <th class="text-left px-5 py-4">Tugas</th>
+                    <th class="text-left px-5 py-4">Waktu Submit</th>
+                    <th class="text-left px-5 py-4">Status</th>
+                    <th class="text-left px-5 py-4">Nilai</th>
+                    <th class="text-left px-5 py-4">Feedback</th>
+                    <th class="text-left px-5 py-4">Aksi</th>
+                  </tr>
+                </thead>
+
+                <tbody class="divide-y divide-slate-100">
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Ahmad Fauzi
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">
+                      Tugas Refleksi Modul 1
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">5 Mei 2024, 20:10</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700"
+                        >Terkumpul</span
+                      >
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">85</td>
+                    <td class="px-5 py-4 text-slate-600">
+                      Sudah diberi catatan
+                    </td>
+                    <td class="px-5 py-4">
+                      <button
+                        class="text-primary font-semibold hover:underline"
+                      >
+                        Koreksi
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Siti Rahma
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">
+                      Tugas Refleksi Modul 1
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">5 Mei 2024, 21:30</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700"
+                        >Terkumpul</span
+                      >
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">90</td>
+                    <td class="px-5 py-4 text-slate-600">Baik</td>
+                    <td class="px-5 py-4">
+                      <button
+                        class="text-primary font-semibold hover:underline"
+                      >
+                        Koreksi
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="px-5 py-4 font-semibold text-slate-900">
+                      Budi Santoso
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">
+                      Tugas Refleksi Modul 1
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">-</td>
+                    <td class="px-5 py-4">
+                      <span
+                        class="px-3 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-700"
+                        >Belum Mengumpulkan</span
+                      >
+                    </td>
+                    <td class="px-5 py-4 text-slate-600">-</td>
+                    <td class="px-5 py-4 text-slate-600">-</td>
+                    <td class="px-5 py-4">
+                      <button
+                        class="text-primary font-semibold hover:underline"
+                      >
+                        Ingatkan
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script>
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const selectedTab = button.getAttribute("data-tab");
+
+          tabButtons.forEach((btn) => {
+            btn.classList.remove("border-primary", "text-primary");
+            btn.classList.add("border-transparent", "text-slate-600");
+          });
+
+          button.classList.remove("border-transparent", "text-slate-600");
+          button.classList.add("border-primary", "text-primary");
+
+          tabContents.forEach((content) => {
+            content.classList.add("hidden");
+          });
+
+          document
+            .getElementById(`tab-${selectedTab}`)
+            .classList.remove("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,537 @@
+<!doctype html>
+
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>WI-Center - Daftar Kelas</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#dce9ff",
+              "on-surface": "#0b1c30",
+              "on-primary-container": "#90a8ff",
+              "secondary-container": "#6cf8bb",
+              tertiary: "#00285e",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#00164e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#264191",
+              "inverse-primary": "#b6c4ff",
+              error: "#ba1a1a",
+              "tertiary-fixed": "#d8e2ff",
+              "tertiary-container": "#003d88",
+              "on-error": "#ffffff",
+              "surface-variant": "#d3e4fe",
+              "on-tertiary-fixed": "#001a42",
+              "inverse-surface": "#213145",
+              "surface-dim": "#cbdbf5",
+              "secondary-fixed-dim": "#4edea3",
+              primary: "#00236f",
+              "surface-container": "#e5eeff",
+              "on-secondary": "#ffffff",
+              "secondary-fixed": "#6ffbbe",
+              "surface-container-low": "#eff4ff",
+              "surface-container-highest": "#d3e4fe",
+              "primary-fixed": "#dce1ff",
+              "on-secondary-container": "#00714d",
+              secondary: "#006c49",
+              "on-background": "#0b1c30",
+              "on-tertiary-fixed-variant": "#004395",
+              "on-surface-variant": "#444651",
+              "on-secondary-fixed-variant": "#005236",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b6c4ff",
+              "surface-tint": "#4059aa",
+              "on-secondary-fixed": "#002113",
+              "inverse-on-surface": "#eaf1ff",
+              "tertiary-fixed-dim": "#adc6ff",
+              "on-error-container": "#93000a",
+              outline: "#757682",
+              "on-tertiary-container": "#82abff",
+              "error-container": "#ffdad6",
+              "primary-container": "#1e3a8a",
+              "surface-bright": "#f8f9ff",
+              background: "#f8f9ff",
+              surface: "#f8f9ff",
+              "outline-variant": "#c5c5d3",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "16px",
+              "topbar-height": "72px",
+              gutter: "24px",
+              "sidebar-collapsed": "80px",
+              "margin-desktop": "32px",
+              "sidebar-width": "260px",
+              "base-unit": "8px",
+            },
+            fontFamily: {
+              headline: ["Inter"],
+              display: ["Inter"],
+              body: ["Inter"],
+              label: ["Inter"],
+              "headline-sm": ["Inter"],
+              "body-md": ["Inter"],
+              "headline-md": ["Inter"],
+              "body-lg": ["Inter"],
+              "display-lg": ["Inter"],
+              "headline-lg": ["Inter"],
+              "label-md": ["Inter"],
+              "label-sm": ["Inter"],
+            },
+            fontSize: {
+              "headline-sm": [
+                "20px",
+                { lineHeight: "28px", fontWeight: "600" },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-lg": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "600" },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "20px",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md min-h-screen flex antialiased"
+  >
+    <!-- SideNavBar -->
+    <nav
+      class="hidden md:flex flex-col py-8 gap-2 w-sidebar-width h-full fixed left-0 top-0 h-screen w-sidebar-width bg-inverse-surface shadow-xl z-40"
+    >
+      <div class="px-6 mb-8">
+        <h1
+          class="text-headline-sm font-headline-sm font-black text-on-primary"
+        >
+          WI-Center
+        </h1>
+        <p class="text-label-sm font-label-sm text-inverse-on-surface/70 mt-1">
+          Expert Facilitator
+        </p>
+      </div>
+      <div class="flex-1 overflow-y-auto w-full">
+        <ul class="space-y-1">
+          <li>
+            <a
+              class="flex items-center gap-4 text-inverse-on-surface/70 hover:text-on-primary px-4 py-3 hover:bg-white/5 transition-all duration-200"
+              href="dashboard.html"
+            >
+              <span class="material-symbols-outlined" data-icon="dashboard"
+                >dashboard</span
+              >
+              <span class="text-label-md font-label-md">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-4 bg-primary-container/40 text-on-primary font-semibold border-l-4 border-primary-container px-4 py-3 scale-[0.98] transition-transform"
+              href="daftarkelas.html"
+            >
+              <span class="material-symbols-outlined" data-icon="school"
+                >school</span
+              >
+              <span class="text-label-md font-label-md">Kelas Saya</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-4 text-inverse-on-surface/70 hover:text-on-primary px-4 py-3 hover:bg-white/5 transition-all duration-200"
+              href="jadwalmengajar.html"
+            >
+              <span class="material-symbols-outlined" data-icon="calendar_today"
+                >calendar_today</span
+              >
+              <span class="text-label-md font-label-md">Jadwal</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-4 text-inverse-on-surface/70 hover:text-on-primary px-4 py-3 hover:bg-white/5 transition-all duration-200"
+              href="report.html"
+            >
+              <span class="material-symbols-outlined" data-icon="analytics"
+                >analytics</span
+              >
+              <span class="text-label-md font-label-md">Report</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="w-full">
+        <ul class="space-y-1">
+          <li>
+            <a
+              class="flex items-center gap-4 text-inverse-on-surface/70 hover:text-on-primary px-4 py-3 hover:bg-white/5 transition-all duration-200"
+              href="profil.html"
+            >
+              <span class="material-symbols-outlined" data-icon="account_circle"
+                >account_circle</span
+              >
+              <span class="text-label-md font-label-md">Profil</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="flex items-center gap-4 text-inverse-on-surface/70 hover:text-on-primary px-4 py-3 hover:bg-white/5 transition-all duration-200"
+              href="login.html"
+            >
+              <span class="material-symbols-outlined" data-icon="logout"
+                >logout</span
+              >
+              <span class="text-label-md font-label-md">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0 md:ml-sidebar-width w-full">
+      <!-- TopNavBar -->
+      <header
+        class="docked full-width top-0 sticky z-50 bg-white/60 backdrop-blur-[20px] border-b border-outline-variant/30 shadow-[0_4px_30px_rgba(0,0,0,0.02)] h-topbar-height w-full flex items-center justify-between px-margin-mobile md:px-margin-desktop"
+      >
+        <div class="flex items-center gap-4 md:hidden">
+          <button
+            class="text-on-surface-variant p-2 -ml-2 rounded-full hover:bg-primary/5 transition-colors"
+          >
+            <span class="material-symbols-outlined" data-icon="menu">menu</span>
+          </button>
+          <span
+            class="text-headline-md font-headline-md font-bold text-primary-container"
+            >WI-Center</span
+          >
+        </div>
+        <div class="hidden md:flex flex-1 items-center max-w-md">
+          <div class="relative w-full">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full bg-white/50 backdrop-blur-sm border border-outline-variant/50 rounded-full py-2 pl-10 pr-4 text-body-md font-body-md focus:ring-2 focus:ring-primary-container/30 focus:border-primary-container text-on-surface placeholder:text-outline transition-all"
+              placeholder="Cari kelas atau materi..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-2 md:gap-4 ml-auto">
+          <button
+            class="p-2 text-on-surface-variant hover:bg-primary/5 transition-colors rounded-full relative"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+            <span
+              class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"
+            ></span>
+          </button>
+          <div
+            class="h-8 w-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant/30 flex-shrink-0 cursor-pointer"
+          >
+            <img
+              alt="User Profile Avatar"
+              class="w-full h-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0y6Yz9Uv6oU7eIsI-8jbNv3H0H5DQmLgC7M9XP-jbZJDuxiqzPBY8yRKQb2XfeMLhnUB7WLOx60ZFJyyTAhAlNLZlvf469rxKheQaKA4BDUUz-tMAzxmWFoMkmufzb-Wq2K_0bBx9Hl2u3MozlZRwAWYkgESNe-SP1eeB5LqIggTVyhGHm8tJB4MaYIAn4FJVjWQuKkC75JCXpWWAk6rvjR0kvm9BMQ2dZCgqQIb_jN8-hu2DNItLvK-JG0WALuqP2OXjtNGrezE"
+            />
+          </div>
+        </div>
+      </header>
+      <!-- Main Canvas -->
+      <main
+        class="flex-1 p-margin-mobile md:p-margin-desktop space-y-6 md:space-y-8 max-w-[1400px] mx-auto w-full relative"
+      >
+        <!-- Decorative Background Gradients -->
+        <div
+          class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-primary-container/5 to-transparent -z-10 pointer-events-none"
+        ></div>
+        <!-- Header Section -->
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-4"
+        >
+          <div>
+            <h2
+              class="text-headline-lg font-headline-lg text-primary-container mb-2"
+            >
+              Kelas Saya
+            </h2>
+            <p class="text-body-md font-body-md text-on-surface-variant">
+              Kelola dan pantau progres pelatihan yang sedang Anda fasilitasi.
+            </p>
+          </div>
+        </div>
+        <!-- Filter & Search Bar -->
+        <div
+          class="bg-white/70 backdrop-blur-xl border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-xl p-3 flex flex-col md:flex-row gap-4 justify-between items-center w-full"
+        >
+          <div
+            class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar"
+          >
+            <button
+              class="px-5 py-2.5 rounded-lg bg-primary-container text-on-primary text-label-md font-label-md whitespace-nowrap flex-shrink-0 shadow-md shadow-primary-container/20 transition-all hover:bg-primary-container/90"
+            >
+              Semua
+            </button>
+            <button
+              class="px-5 py-2.5 rounded-lg text-on-surface-variant bg-white/50 hover:bg-white border border-outline-variant/20 shadow-sm text-label-md font-label-md whitespace-nowrap flex-shrink-0 transition-all"
+            >
+              Aktif
+            </button>
+            <button
+              class="px-5 py-2.5 rounded-lg text-on-surface-variant bg-white/50 hover:bg-white border border-outline-variant/20 shadow-sm text-label-md font-label-md whitespace-nowrap flex-shrink-0 transition-all"
+            >
+              Selesai
+            </button>
+          </div>
+          <div class="relative w-full md:w-72 flex-shrink-0">
+            <span
+              class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full bg-white/80 border border-outline-variant/30 rounded-lg py-2.5 pl-10 pr-4 text-body-md font-body-md focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container text-on-surface placeholder:text-outline transition-all"
+              placeholder="Cari nama pelatihan..."
+              type="text"
+            />
+          </div>
+        </div>
+        <!-- Bento Grid - Class Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <a
+            class="group bg-white/70 backdrop-blur-lg rounded-2xl border border-white/60 overflow-hidden shadow-[0_8px_30px_rgb(30,58,138,0.04)] hover:shadow-[0_8px_30px_rgb(30,58,138,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col h-full relative"
+            href="detailkelas.html"
+          >
+            <div class="p-6 flex-1 flex flex-col relative z-10">
+              <div class="flex justify-between items-start mb-5">
+                <span
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/50 text-secondary border border-secondary/10 text-label-sm font-label-sm uppercase tracking-wider font-semibold"
+                >
+                  <span
+                    class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(0,108,73,0.6)]"
+                  ></span>
+                  Aktif
+                </span>
+                <span
+                  class="text-on-surface-variant text-label-sm font-label-sm bg-surface-container-high/50 border border-outline-variant/20 px-3 py-1.5 rounded-full"
+                  >Batch 3</span
+                >
+              </div>
+              <h3
+                class="text-headline-sm font-headline-sm text-on-surface mb-3 group-hover:text-primary-container transition-colors line-clamp-2"
+              >
+                Pelatihan TOT Angk. 3
+              </h3>
+              <div
+                class="flex items-center gap-2 text-on-surface-variant text-label-md font-label-md mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-[18px] text-primary-container/70"
+                  data-icon="calendar_month"
+                  >calendar_month</span
+                >
+                <span>1 - 15 Mei 2024</span>
+              </div>
+              <div class="mt-auto space-y-3">
+                <div
+                  class="flex items-center justify-between text-label-md font-label-md"
+                >
+                  <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span
+                      class="material-symbols-outlined text-[20px] text-primary-container/70"
+                      data-icon="groups"
+                      >groups</span
+                    >
+                    <span>25 Peserta</span>
+                  </div>
+                  <span class="text-primary-container font-semibold"
+                    >78% Selesai</span
+                  >
+                </div>
+                <div
+                  class="w-full h-2.5 bg-surface-container-high/50 inset-shadow-sm rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full bg-primary-container rounded-full"
+                    style="width: 78%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!-- Card 2 -->
+          <a
+            class="group bg-white/70 backdrop-blur-lg rounded-2xl border border-white/60 overflow-hidden shadow-[0_8px_30px_rgb(30,58,138,0.04)] hover:shadow-[0_8px_30px_rgb(30,58,138,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col h-full relative"
+            href="#"
+          >
+            <div class="p-6 flex-1 flex flex-col relative z-10">
+              <div class="flex justify-between items-start mb-5">
+                <span
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/50 text-secondary border border-secondary/10 text-label-sm font-label-sm uppercase tracking-wider font-semibold"
+                >
+                  <span
+                    class="w-1.5 h-1.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(0,108,73,0.6)]"
+                  ></span>
+                  Aktif
+                </span>
+                <span
+                  class="text-on-surface-variant text-label-sm font-label-sm bg-surface-container-high/50 border border-outline-variant/20 px-3 py-1.5 rounded-full"
+                  >Batch 1</span
+                >
+              </div>
+              <h3
+                class="text-headline-sm font-headline-sm text-on-surface mb-3 group-hover:text-primary-container transition-colors line-clamp-2"
+              >
+                Diklat Kepemimpinan Tingkat IV
+              </h3>
+              <div
+                class="flex items-center gap-2 text-on-surface-variant text-label-md font-label-md mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-[18px] text-primary-container/70"
+                  data-icon="calendar_month"
+                  >calendar_month</span
+                >
+                <span>10 Mei - 20 Jun 2024</span>
+              </div>
+              <div class="mt-auto space-y-3">
+                <div
+                  class="flex items-center justify-between text-label-md font-label-md"
+                >
+                  <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span
+                      class="material-symbols-outlined text-[20px] text-primary-container/70"
+                      data-icon="groups"
+                      >groups</span
+                    >
+                    <span>40 Peserta</span>
+                  </div>
+                  <span class="text-primary-container font-semibold"
+                    >45% Selesai</span
+                  >
+                </div>
+                <div
+                  class="w-full h-2.5 bg-surface-container-high/50 inset-shadow-sm rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full bg-primary-container rounded-full"
+                    style="width: 45%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <!-- Card 3 -->
+          <a
+            class="group bg-white/70 backdrop-blur-lg rounded-2xl border border-white/60 overflow-hidden shadow-[0_8px_30px_rgb(30,58,138,0.04)] hover:shadow-[0_8px_30px_rgb(30,58,138,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col h-full relative opacity-90"
+            href="#"
+          >
+            <div class="p-6 flex-1 flex flex-col relative z-10">
+              <div class="flex justify-between items-start mb-5">
+                <span
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high/50 text-on-surface-variant border border-outline-variant/30 text-label-sm font-label-sm uppercase tracking-wider font-semibold"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  Selesai
+                </span>
+                <span
+                  class="text-on-surface-variant text-label-sm font-label-sm bg-surface-container-high/50 border border-outline-variant/20 px-3 py-1.5 rounded-full"
+                  >Batch 2</span
+                >
+              </div>
+              <h3
+                class="text-headline-sm font-headline-sm text-on-surface mb-3 group-hover:text-primary-container transition-colors line-clamp-2"
+              >
+                Bimtek Penyusunan KTI
+              </h3>
+              <div
+                class="flex items-center gap-2 text-on-surface-variant text-label-md font-label-md mb-6"
+              >
+                <span
+                  class="material-symbols-outlined text-[18px] text-outline"
+                  data-icon="calendar_month"
+                  >calendar_month</span
+                >
+                <span>5 - 15 Apr 2024</span>
+              </div>
+              <div class="mt-auto space-y-3">
+                <div
+                  class="flex items-center justify-between text-label-md font-label-md"
+                >
+                  <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span
+                      class="material-symbols-outlined text-[20px] text-outline"
+                      data-icon="groups"
+                      >groups</span
+                    >
+                    <span>30 Peserta</span>
+                  </div>
+                  <span class="text-secondary font-semibold">100% Selesai</span>
+                </div>
+                <div
+                  class="w-full h-2.5 bg-surface-container-high/50 inset-shadow-sm rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full bg-secondary rounded-full"
+                    style="width: 100%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
