@@ -29,10 +29,12 @@
             </a>
         @endforeach
         
-        <a href="{{ route('login') }}"
-            class="flex items-center gap-4 text-slate-300 hover:text-white px-4 py-3 hover:bg-[#334155] transition-all duration-200 mt-auto">
-            <span class="material-symbols-outlined">logout</span>
-            <span class="text-label-md font-label-md">Logout</span>
-        </a>
+        <form method="POST" action="{{ route('logout') }}" class="mt-auto w-full">
+            @csrf
+            <button type="submit" class="w-full flex items-center gap-4 text-slate-300 hover:text-white px-4 py-3 hover:bg-[#334155] transition-all duration-200">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="text-label-md font-label-md">Logout</span>
+            </button>
+        </form>
     </nav>
 </aside>
